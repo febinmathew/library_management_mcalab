@@ -2,7 +2,32 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="../styles/main.css">
 	<title>ADD BOOK</title>
+	<style type="text/css">
+               div.nav
+               {
+                       background-color: #e6b0aa   ;
+               }
+               body
+               {
+
+                       background-image: url("book1.jpg");
+                       background-size: cover;
+               }
+               .c
+               {
+                       color: white;
+                       font-weight: bold;
+
+               }
+               h2
+               {
+                       color: black;
+                       
+              }
+
+       </style>
 </head>
 <body>
 
@@ -20,10 +45,11 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 } else{ ?>
-
+<span class="form_area">
 
 <h2>Enter your book details</h2>
 <form method="POST">
+
 <table>
 	<tr>
 		<td>Book Name</td><td><input type="text" name="book_name" required></td>
@@ -46,7 +72,9 @@ if ($conn->query($sql) === TRUE) {
 	
 </table>
 <input type="submit" name="submit" value="SUBMIT">
+
 </form>
+</span>
 <?php } ?>
 </center>
 

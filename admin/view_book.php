@@ -21,7 +21,7 @@ $result=$conn->query($sql);
 
 if ($result->num_rows > 0) {
 ?>
-
+<span class="form_area">
 <table>
 <tr>
 		<th>Book ID</th>
@@ -42,6 +42,7 @@ echo "<tr><td>" . $row["id"]. "</td><td>". $row["book_name"]. "</td><td>"
 ?>
 	
 </table>
+</span>
 <?php } else {
 	echo "<h2>No books available</h2>";
 } ?>
