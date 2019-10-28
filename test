@@ -1,0 +1,85 @@
+<html>
+ <head>
+        <title>ADD BOOK</title>
++       <style type="text/css">
++               div.nav
++               {
++                       background-color: #e6b0aa   ;
++               }
++               body
++               {
++
++                       background-image: url("book1.jpg");
++                       background-size: cover;
++               }
++               .c
++               {
++                       color: white;
++                       font-weight: bold;
++
++               }
++               h2
++               {
++                       color: black;
++                       
++               }
++
++       </style>
+ </head>
+ <body>
+ 
++<div class="nav">
++       <table width="175%">
++               <tr>
++                       <td text-align="left">
++                               <h2 ><font color="White">Library Management System</h2>
++                       </td>
++                       <td >
++                               Issue Book 
++                       </td>
++               </tr>
++       </table>
++       
++</div>
++
++<div class="body">
+ <center>
+-<h2>Enter your book details</h2>
++<h2>Book Registration</h2>
+ <form>
+ <table>
+        <tr>
+-               <td>Book Name</td><td><input type="text" name="bkname"></td>
++               <td class="c">Book Name</td><td><input type="text" name="bkname"></td>
+        </tr>
+        <tr>
+-               <td>Author</td><td><input type="text" name="bkautr"></td>
++               <td class="c">Author</td><td><input type="text" name="bkautr"></td>
+        </tr>
+        <tr>
+-               <td>Publisher</td><td><input type="text" name="bkpub"></td>
++               <td class="c">Publisher</td><td><input type="text" name="bkpub"></td>
+        </tr>
+        <tr>
+-               <td>Published Date</td><td><input type="text" name="pubdat"></td>
++               <td class="c">Published Date</td><td><input type="text" name="pubdat"></td>
+        </tr>
+        <tr>
+-               <td>Pages</td><td><input type="text" name="bkpage"></td>
++               <td class="c">Pages</td><td><input type="text" name="bkpage"></td>
+        </tr>
+        <tr>
+-               <td>Price</td><td><input type="text" name="bkprice"></td>
++               <td class="c">Price</td><td><input type="text" name="bkprice"></td>
+        </tr>
+        
+ </table>
+ <input type="submit" name="submit" value="SUBMIT">
++<input type="reset" name="reset" value="RESET">
+ </form>
+ </center>
++</div>
+ 
+ </body>
+ </html>
+
