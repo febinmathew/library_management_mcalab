@@ -35,6 +35,7 @@
 <?php 
 echo "name in post : ".$_POST["book_name"];
 if ($_POST["book_name"]){
+
     $sql = "INSERT INTO books (book_name, book_author, book_publisher,book_publish_date,book_price,book_pages)
     VALUES ('".$_POST["book_name"]."', '".$_POST["book_author"]."', '".$_POST["book_publisher"]."','".$_POST["book_publish_date"]."',".$_POST["book_price"]." , ".$_POST["book_pages"].")";
 

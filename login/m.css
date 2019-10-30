@@ -1,0 +1,98 @@
+.body{
+	background:url(ccc.jpg) no-repeat;
+	background-size:cover;
+	font-family:sans-serif;
+	margin:0px;
+	padding:0px;
+}
+.login{
+	width:275px;
+	color:white;
+	margin-left:45%;
+	margin-top:18%;
+	
+}
+.login h1{
+	font-size:25px;
+	width:70px;
+	border-bottom:4px solid #ffffff;
+	padding-bottom:8px;	
+	
+}
+.user,.pass{
+	padding:0px;
+	border-bottom:2px solid #ffffff;
+	padding-bottom:10px;
+	padding-top:10px;
+width:290px;
+}
+
+#bbb
+{
+	padding-top:5px;
+	margin-bottom:2px;
+	padding:2px;
+border:2px solid #ffffff;
+width:290px;
+color:white;}
+
+.login input,.login input{
+	color:white;
+	border:none;
+	background:none;
+	outline:none;
+	opacity:1;
+}	
+#ghg{
+margin-top:8px;
+padding-top:5px;
+border:2px solid #ffffff;
+width:290px;
+color:white;
+}
+a:link
+{
+color:#ffffff;
+padding-left:63%;
+padding-top:10px;
+font-size:12px;
+}
+.pop
+{
+margin-left:45%;
+margin-top:17%;
+}
+#lol
+{
+marging-left:50%;
+}
+#yu::placeholder,.iii::placeholder
+{
+	color:#ffffff;
+	opacity:.8;
+	font-size:15px;
+}
+.tt
+{
+	font-size:14px;
+}
+.ww{
+margin-left:4.5px;	
+}
+
+.pop h2{
+color:#ffffff;
+padding-left:8px;
+}
+
+.pop input{
+border-radius:20px;
+margin:4px;
+padding:5px;
+}
+.pop button{
+margin-left:10%;
+margin-top:5px;
+padding:4px;
+}
+

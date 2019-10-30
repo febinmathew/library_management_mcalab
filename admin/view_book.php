@@ -1,4 +1,5 @@
 <?php require '../sql_connection.php'; ?>
+<?php require '../auth_check.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
