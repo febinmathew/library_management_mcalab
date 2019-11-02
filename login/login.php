@@ -1,5 +1,5 @@
-<?php require '../sql_connection.php'; ?>
-<?php require '../auth_check.php'; ?>
+
+<?php require __DIR__.'/../auth_check.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,7 @@
 <h1>Login</h1>
 <div class="user">
 <img src="user.jpg" width="20px" height="20px"/>
-<input class="iii" type="text" name="user_email" placeholder="Username" required/>
+<input class="iii" type="text" name="user_email" placeholder="Username"  value="fmfebinmathew@gmail.com" required/>
 </div>
 <div class="pass">
 <img src="lock.jpg" width="20px" height="20px"/>
@@ -45,7 +45,7 @@ i.src="open.png";
 	
 }
 </script>
-<input id="yu" type="password" name="user_pass" placeholder="Password" required>
+<input id="yu" type="password" name="user_pass" placeholder="Password" text="123456" required>
 <span class="lkl" name="iii">
 <img id="io" src="open.png"   name="open" width="20px" height="15px"  onclick="myFunction()"/>
 </span>
@@ -53,7 +53,7 @@ i.src="open.png";
 </div><br>
 <input id="bbb" type="submit" name="login" value="Login"/>
 <br>
-<input id="ghg" type="submit" name="signup" value="signup" onclick="window.location='sign_up.php';"/>
+<input id="ghg" type="button" name="signup" value="signup" onclick="window.location='sign_up.php';"/>
 <a  class="ww" href="fff.html">forget password</a>
 </div>
 </form>

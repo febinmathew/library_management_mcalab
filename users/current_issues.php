@@ -22,6 +22,13 @@
 
 <?php 
 $book_issue_table="book_issue";
+
+$sql = "SELECT * FROM book_issue LEFT JOIN books ON book_issue.book_id=books.id " .
+"LEFT JOIN (users LEFT JOIN department ON users.department=department.id) ON book_issue.user_id=users.user_id ".
+"where book_issue.user_id = ". $userrow['user_id'];
+
+
+
 $sql = "SELECT * FROM book_issue LEFT JOIN books ON book_issue.book_id=books.id " .
 "LEFT JOIN (users LEFT JOIN department ON users.department=department.id) ON book_issue.user_id=users.user_id";
 $result=$conn->query($sql);
