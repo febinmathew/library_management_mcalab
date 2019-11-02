@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 02, 2019 at 12:44 PM
+-- Generation Time: Oct 23, 2019 at 12:00 PM
 -- Server version: 5.7.27-0ubuntu0.16.04.1
--- PHP Version: 7.0.33-0ubuntu0.16.04.7
+-- PHP Version: 7.0.33-0ubuntu0.16.04.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -36,16 +36,6 @@ CREATE TABLE `books` (
   `book_pages` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `books`
---
-
-INSERT INTO `books` (`id`, `book_name`, `book_author`, `book_publisher`, `book_publish_date`, `book_price`, `book_pages`) VALUES
-(3, 'Thumbalina', 'Unknown', 'DC Books', NULL, 76, 56),
-(4, 'test 1', 'test2', 'dfsdfsd', '2019-10-09', 99, 89),
-(5, 'hibokk', 'ewrer', '3sdfdfsdf', '2019-10-09', 76, 6),
-(6, 'werwrwe', 'rwerwer', 'werwerwerwe', '2019-10-01', 78, 76);
-
 -- --------------------------------------------------------
 
 --
@@ -72,13 +62,6 @@ CREATE TABLE `department` (
   `dep_name` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `department`
---
-
-INSERT INTO `department` (`id`, `dep_name`) VALUES
-(1, 'MCA');
-
 -- --------------------------------------------------------
 
 --
@@ -94,13 +77,6 @@ CREATE TABLE `users` (
   `user_pass` varchar(40) DEFAULT NULL,
   `department` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `user_type`, `admision_no`, `user_name`, `user_email`, `user_pass`, `department`) VALUES
-(1, 1, '190909', 'febinmathew', 'fmfebinmathew@gmail.com', '123456', 1);
 
 --
 -- Indexes for dumped tables
@@ -141,7 +117,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `book_issue`
 --
@@ -151,12 +127,12 @@ ALTER TABLE `book_issue`
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
