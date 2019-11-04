@@ -15,8 +15,9 @@
   			border-collapse: collapse;
 		}
 	</style>
+	<link rel="stylesheet" type="text/css" href="../styles/main.css">
 </head>
-<body>
+<body class="iframe_body">
 <center>
 <h2 class="view_issue"><input type="button" name="stuview" value="Student"><input type="button" name="facview" value="Faculty"></h2>
 

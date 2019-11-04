@@ -11,8 +11,9 @@
   		border-collapse: collapse;
 		}
 </style>
+<link rel="stylesheet" type="text/css" href="../styles/main.css">
 </head>
-<body>
+<body class="iframe_body">
 <center>
 
 <?php 

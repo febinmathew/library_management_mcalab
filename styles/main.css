@@ -1,3 +1,8 @@
 .form_area{
     background: #ffffff;
 }
+
+.iframe_body{
+    border-radius: 0.2em;
+    background: #ededed;
+}

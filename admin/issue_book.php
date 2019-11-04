@@ -16,11 +16,12 @@
   			border: 1px solid black;
   			border-collapse: collapse;
 		}
-	</style>
+    </style>
+    <link rel="stylesheet" type="text/css" href="../styles/main.css">
 </head>
 <body>
 <input type="text" onkeyup="showHint(this.value)">
-</body>
+</body class="iframe_body">
 
 <script>
 function showHint(str) {
