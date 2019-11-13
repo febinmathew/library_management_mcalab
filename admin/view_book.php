@@ -35,12 +35,13 @@ if ($result->num_rows > 0) {
 		<th>Price</th>
 </tr>
 <?php while($row = $result->fetch_assoc()) {
-
+echo '<form action="/sdfsdfsdf.php" method="POST">';
 echo "<tr><td>" . $row["id"]. "</td><td>". $row["book_name"]. "</td><td>"
 . $row["book_author"]. "</td><td>". $row["book_publisher"]. "</td><td>"
 . $row["book_publish_date"]. "</td><td>". $row["book_pages"]. "</td><td>"
 . $row["book_price"]. "</td>". "</tr>";
 }
+echo '<form>'
 ?>
 	
 </table>
