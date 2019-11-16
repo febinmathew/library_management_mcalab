@@ -31,6 +31,8 @@ $_POST["user_id"] .",".
 $_POST["book_id"].",CURDATE(),0,CURDATE()+10);";
 //echo $sql;
 if ($conn->query($sql) === TRUE) {
+        $sql = "UPDATE books SET book_quantity=book_quantity-1 WHERE id=".$_POST["book_id"].";";
+		$conn->query($sql);
         echo "<div class=\"bg_card\" ><h2>New issue successfully</h2></div>";
 } else {
         echo "Error: " . $sql . "<br>" . $conn->error;

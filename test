@@ -1,85 +1,128 @@
-<html>
- <head>
-        <title>ADD BOOK</title>
-+       <style type="text/css">
-+               div.nav
-+               {
-+                       background-color: #e6b0aa   ;
-+               }
-+               body
-+               {
-+
-+                       background-image: url("book1.jpg");
-+                       background-size: cover;
-+               }
-+               .c
-+               {
-+                       color: white;
-+                       font-weight: bold;
-+
-+               }
-+               h2
-+               {
-+                       color: black;
-+                       
-+               }
-+
-+       </style>
- </head>
- <body>
- 
-+<div class="nav">
-+       <table width="175%">
-+               <tr>
-+                       <td text-align="left">
-+                               <h2 ><font color="White">Library Management System</h2>
-+                       </td>
-+                       <td >
-+                               Issue Book 
-+                       </td>
-+               </tr>
-+       </table>
-+       
-+</div>
-+
-+<div class="body">
- <center>
--<h2>Enter your book details</h2>
-+<h2>Book Registration</h2>
- <form>
- <table>
-        <tr>
--               <td>Book Name</td><td><input type="text" name="bkname"></td>
-+               <td class="c">Book Name</td><td><input type="text" name="bkname"></td>
-        </tr>
-        <tr>
--               <td>Author</td><td><input type="text" name="bkautr"></td>
-+               <td class="c">Author</td><td><input type="text" name="bkautr"></td>
-        </tr>
-        <tr>
--               <td>Publisher</td><td><input type="text" name="bkpub"></td>
-+               <td class="c">Publisher</td><td><input type="text" name="bkpub"></td>
-        </tr>
-        <tr>
--               <td>Published Date</td><td><input type="text" name="pubdat"></td>
-+               <td class="c">Published Date</td><td><input type="text" name="pubdat"></td>
-        </tr>
-        <tr>
--               <td>Pages</td><td><input type="text" name="bkpage"></td>
-+               <td class="c">Pages</td><td><input type="text" name="bkpage"></td>
-        </tr>
-        <tr>
--               <td>Price</td><td><input type="text" name="bkprice"></td>
-+               <td class="c">Price</td><td><input type="text" name="bkprice"></td>
-        </tr>
-        
- </table>
- <input type="submit" name="submit" value="SUBMIT">
-+<input type="reset" name="reset" value="RESET">
- </form>
- </center>
-+</div>
- 
- </body>
- </html>
+<?php require '../auth_check.php'; 
+function getStatusTextFromCode($status){
 
+	if($status==0)
+		return "Issued";
+	else if($status==1)
+		return "Returned";
+	else
+		return "Un-kown";
+
+}
+
+
+if ($_POST["return"] && $_POST["issue_id"]){
+	$sql = "UPDATE book_issue SET issue_status=1 WHERE id=".$_POST["issue_id"].";";
+	echo "<h2>sql </h2> ".$sql;
+	if ($conn->query($sql) === TRUE) {
+		//echo "<h2>Password Changed successfully</h2>";
+	} else {
+		echo "Error: " . $sql . "<br>" . $conn->error;
+	}		
+}
+
+
+function getStatusButtonFromCode($status,$issue_id){
+
+	
+	//$str = '<form action="POST" >';
+	//$str = '';
+	//$str = '<button value="Return">Test</button>';
+	//$str += '</form>';
+	//$str += '<button value="Return">Return</button>';
+	//return $str;
+	if($status==0){
+		$str = '<input type="text" name="issue_id" value="'.$issue_id.'"/>
+		<input type="button" name="return" value="Return">Return</button>';
+	}
+	else if($status==1){
+		
+	}
+	else
+		return "Un-kown";
+	
+	//$str += '</form>';
+	//echo "hi";
+	return $str;
+
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Issuers Details</title>
+
+	<style type="text/css">
+		.view_issue 
+		{
+			display: none;
+		}
+		table, th, td
+		{
+  			border: 1px solid black;
+  			border-collapse: collapse;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="../styles/main.css">
+</head>
+<body class="iframe_body">
+<center>
+<h2 class="view_issue"><input type="button" name="stuview" value="Student"><input type="button" name="facview" value="Faculty"></h2>
+
+<?php 
+$book_issue_table="book_issue";
+$sql = "SELECT book_issue.issue_status as issue_status,
+book_issue.id as id,
+books.id as book_id,
+ books.book_name as book_name,
+ users.user_id as user_id,
+ users.user_name as user_name,
+ department.dep_name as dep_name
+
+ 
+  FROM book_issue LEFT JOIN books ON book_issue.book_id=books.id " .
+"LEFT JOIN (users LEFT JOIN department ON users.department=department.id) ON book_issue.user_id=users.user_id";
+$result=$conn->query($sql);
+
+if ($result->num_rows > 0) {
+?>
+
+<table>
+	<tr>
+		<th>Book ID</th>
+		<th>Book Name</th>
+		<th>Issuers ID</th>
+		<th>Issuer Name</th>
+		<th>Department</th>
+		<th>Status</th>
+		<th>Action</th>
+	</tr>
+
+	<?php 
+
+	
+	while($row = $result->fetch_assoc()) {
+		echo '<form>';
+echo "<tr><td>" . $row["book_id"]. "</td><td>". $row["book_name"]. "</td><td>"
+. $row["user_id"]. "</td><td>". $row["user_name"]. "</td><td>"
+. $row["dep_name"]. "</td>". "</td><td>"
+.getStatusTextFromCode($row["issue_status"]). "</td><td>"
+.getStatusButtonFromCode($row["id"],$row["book_id"]). "</td>". "</tr>";
+}
+echo '</form>';
+
+
+?>
+
+
+</table>
+<?php
+
+//echo $result->num_rows;
+} else {
+	
+	echo "<h2>No Issues made yet</h2>";
+} ?>
+</center>
+</body>
+</html>

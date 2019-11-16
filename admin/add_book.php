@@ -38,8 +38,8 @@ require '../auth_check.php';
 echo "name in post : ".$_POST["book_name"];
 if ($_POST["book_name"]){
 
-    $sql = "INSERT INTO books (book_name, book_author, book_publisher,book_publish_date,book_price,book_pages)
-    VALUES ('".$_POST["book_name"]."', '".$_POST["book_author"]."', '".$_POST["book_publisher"]."','".$_POST["book_publish_date"]."',".$_POST["book_price"]." , ".$_POST["book_pages"].")";
+    $sql = "INSERT INTO books (book_name, book_author, book_publisher,book_publish_date,book_price,book_quantity)
+    VALUES ('".$_POST["book_name"]."', '".$_POST["book_author"]."', '".$_POST["book_publisher"]."','".$_POST["book_publish_date"]."',".$_POST["book_price"]." , ".$_POST["book_quantity"].")";
 
 if ($conn->query($sql) === TRUE) {
 
@@ -67,7 +67,7 @@ if ($conn->query($sql) === TRUE) {
 		<td>Published Date</td><td><input type="date" name="book_publish_date" required></td>
 	</tr>
 	<tr>
-		<td>Pages</td><td><input type="text" name="book_pages" required></td>
+		<td>Quantity</td><td><input type="text" name="book_quantity" required></td>
 	</tr>
 	<tr>
 		<td>Price</td><td><input type="text" name="book_price" requiredy></td>

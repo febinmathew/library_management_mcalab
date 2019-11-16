@@ -10,7 +10,10 @@ function getStatusTextFromCode($status){
 
 }
 
-function getStatusButtonFromCode($status){
+
+
+
+function getStatusButtonFromCode($status,$book_id,$issue_id){
 
 	
 	//$str = '<form action="POST" >';
@@ -20,7 +23,9 @@ function getStatusButtonFromCode($status){
 	//$str += '<button value="Return">Return</button>';
 	//return $str;
 	if($status==0){
-		$str = '<button value="Return">Return</button>';
+		$str = '<input type="text" name="issue_id" value="'.$issue_id.'" hidden/>
+		<input type="text" name="book_id" value="'.$book_id.'" hidden/>
+		<input type="submit" name="return" value="Return"></input>';
 	}
 	else if($status==1){
 		
@@ -57,9 +62,24 @@ function getStatusButtonFromCode($status){
 <h2 class="view_issue"><input type="button" name="stuview" value="Student"><input type="button" name="facview" value="Faculty"></h2>
 
 <?php 
+//echo "helloooo ".$_POST["issue_id"];
+if ($_POST["return"] && $_POST["issue_id"]){
+	$sql = "UPDATE book_issue SET issue_status=1 WHERE issue_id=".$_POST["issue_id"].";";
+	//echo "<h2>sql </h2> ".$sql;
+	if ($conn->query($sql) === TRUE) {
+		$sql = "UPDATE books SET book_quantity=book_quantity+1 WHERE id=".$_POST["book_id"].";";
+		$conn->query($sql);
+		//echo "<h2>Password Changed successfully</h2>";
+	} else {
+		echo "Error: " . $sql . "<br>" . $conn->error;
+	}		
+}
+
 $book_issue_table="book_issue";
 $sql = "SELECT book_issue.issue_status as issue_status,
-books.id as id,
+
+book_issue.issue_id as issue_id,
+books.id as book_id,
  books.book_name as book_name,
  users.user_id as user_id,
  users.user_name as user_name,
@@ -88,13 +108,14 @@ if ($result->num_rows > 0) {
 
 	
 	while($row = $result->fetch_assoc()) {
-
-echo "<tr><td>" . $row["id"]. "</td><td>". $row["book_name"]. "</td><td>"
+		echo '<form method="POST">';
+echo "<tr><td>" . $row["book_id"]. "</td><td>". $row["book_name"]. "</td><td>"
 . $row["user_id"]. "</td><td>". $row["user_name"]. "</td><td>"
 . $row["dep_name"]. "</td>". "</td><td>"
 .getStatusTextFromCode($row["issue_status"]). "</td><td>"
-.getStatusButtonFromCode($row["issue_status"]). "</td>". "</tr>";
+.getStatusButtonFromCode($row["issue_status"],$row["book_id"],$row["issue_id"]). "</td>". "</tr>";
 }
+echo '</form>';
 
 
 ?>

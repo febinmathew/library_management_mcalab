@@ -15,15 +15,25 @@
 </head>
 <body class="iframe_body">
 <center>
-
+<form method="POST">
+<input type="text" name="search_text" placeholder="Search for books"/>
+<input type="submit" name="search" value="Search"></input>
+</form>
 <?php 
+if ($_POST["search_text"]){
+	$sql = "SELECT * FROM books WHERE book_name LIKE '%".$_POST["search_text"]."%';";
+}
+else
+$sql = "SELECT * FROM books;";
 
-$sql = "SELECT * FROM books ";
+//echo $sql;
 $result=$conn->query($sql);
 
 if ($result->num_rows > 0) {
 ?>
 <span class="form_area">
+
+
 <table>
 <tr>
 		<th>Book ID</th>
@@ -31,14 +41,14 @@ if ($result->num_rows > 0) {
 		<th>Author</th>
 		<th>Publisher</th>
 		<th>Published Date</th>
-		<th>Pages</th>
+		<th>Quantity</th>
 		<th>Price</th>
 </tr>
 <?php while($row = $result->fetch_assoc()) {
 echo '<form action="/sdfsdfsdf.php" method="POST">';
 echo "<tr><td>" . $row["id"]. "</td><td>". $row["book_name"]. "</td><td>"
 . $row["book_author"]. "</td><td>". $row["book_publisher"]. "</td><td>"
-. $row["book_publish_date"]. "</td><td>". $row["book_pages"]. "</td><td>"
+. $row["book_publish_date"]. "</td><td>". $row["book_quantity"]. "</td><td>"
 . $row["book_price"]. "</td>". "</tr>";
 }
 echo '<form>'

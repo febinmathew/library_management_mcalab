@@ -33,7 +33,7 @@ CREATE TABLE `books` (
   `book_publisher` varchar(30) NOT NULL,
   `book_publish_date` date DEFAULT NULL,
   `book_price` int(11) NOT NULL,
-  `book_pages` int(11) DEFAULT '0'
+  `book_quantity` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -71,7 +71,7 @@ CREATE TABLE `department` (
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `user_type` int(11) NOT NULL,
-  `admision_no` varchar(10) DEFAULT NULL,
+  `admission_no` varchar(10) DEFAULT NULL,
   `user_name` varchar(40) DEFAULT NULL,
   `user_email` varchar(40) DEFAULT NULL,
   `user_pass` varchar(40) DEFAULT NULL,
@@ -106,7 +106,7 @@ ALTER TABLE `department`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `admision_no` (`admision_no`),
+  ADD UNIQUE KEY `admission_no` (`admission_no`),
   ADD UNIQUE KEY `user_email` (`user_email`);
 
 --

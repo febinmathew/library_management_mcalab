@@ -10,6 +10,21 @@ if($_GET["logout"]==1){
     $_SESSION["session_password"]="";
 }
 $userrow;
+if ($_POST["sign_up"]||$_POST["user_pass"]){
+    if($_POST["user_pass"]===$_POST["user_pass_confirm"]){
+        $sql22 = "INSERT INTO users(user_type,admission_no,user_name,user_email,user_pass,department) VALUES("
+        ."0".",'"
+        .$_POST["admission_no"]."','"
+        .$_POST["user_name"]."','"
+        .$_POST["user_email"]."','"
+        .$_POST["user_pass"]."',"
+        //.$_POST["user_pass_confirm"].","
+        ."1".");";
+        echo $sql22;
+        $result=$conn->query($sql22);
+        return;
+    }
+}
 if ((!$_POST["user_email"] && !$_POST["user_pass"]) && $_SESSION["session_email"]!=null && $_SESSION["session_password"]!=null){
     //echo "custom session";
     $_POST["user_email"]=$_SESSION["session_email"];
