@@ -13,7 +13,7 @@ require '../auth_check.php';
 <center>
 <?php 
 session_start();
-if ($_POST["current_password"]){
+if (isset($_POST["current_password"])){
 
         if($_POST["new_password"]==$_POST["confirm_new_password"]){
             //echo $_POST["new_password"];

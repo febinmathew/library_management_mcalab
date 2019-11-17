@@ -22,10 +22,11 @@ function getStatusButtonFromCode($status,$book_id,$issue_id){
 	//$str += '</form>';
 	//$str += '<button value="Return">Return</button>';
 	//return $str;
+	$str = '';
 	if($status==0){
 		$str = '<input type="text" name="issue_id" value="'.$issue_id.'" hidden/>
 		<input type="text" name="book_id" value="'.$book_id.'" hidden/>
-		<input type="submit" name="return" value="Return"></input>';
+		<input type="submit" name="return" value="Return" class="btn btn-sm btn-warning w-100"></input>';
 	}
 	else if($status==1){
 		
@@ -56,6 +57,8 @@ function getStatusButtonFromCode($status,$book_id,$issue_id){
 		}
 	</style>
 	<link rel="stylesheet" type="text/css" href="../styles/main.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <body class="iframe_body">
 <center>
@@ -63,7 +66,7 @@ function getStatusButtonFromCode($status,$book_id,$issue_id){
 
 <?php 
 //echo "helloooo ".$_POST["issue_id"];
-if ($_POST["return"] && $_POST["issue_id"]){
+if (isset($_POST["return"]) && isset($_POST["issue_id"])){
 	$sql = "UPDATE book_issue SET issue_status=1 WHERE issue_id=".$_POST["issue_id"].";";
 	//echo "<h2>sql </h2> ".$sql;
 	if ($conn->query($sql) === TRUE) {
@@ -87,21 +90,22 @@ books.id as book_id,
 
  
   FROM book_issue LEFT JOIN books ON book_issue.book_id=books.id " .
-"LEFT JOIN (users LEFT JOIN department ON users.department=department.id) ON book_issue.user_id=users.user_id";
+"LEFT JOIN (users LEFT JOIN department ON users.department=department.id) ON book_issue.user_id=users.user_id where book_issue.issue_status=0";
 $result=$conn->query($sql);
 
 if ($result->num_rows > 0) {
 ?>
-
-<table>
+<h2 class="m-3">Issued Books</h2>
+<table class="table">
+<thead class="thead-dark">
 	<tr>
-		<th>Book ID</th>
-		<th>Book Name</th>
-		<th>Issuers ID</th>
-		<th>Issuer Name</th>
-		<th>Department</th>
-		<th>Status</th>
-		<th>Action</th>
+		<th scope="col">Book ID</th>
+		<th scope="col">Book Name</th>
+		<th scope="col">User ID</th>
+		<th scope="col">User Name</th>
+		<th scope="col">Department</th>
+		<th scope="col">Status</th>
+		<th scope="col">Action</th>
 	</tr>
 
 	<?php 
@@ -120,14 +124,14 @@ echo '</form>';
 
 ?>
 
-
+</tbody>
 </table>
 <?php
 
 //echo $result->num_rows;
 } else {
 	
-	echo "<h2>No Issues made yet</h2>";
+	echo '<h3  class="m-3">No books are issued !</h3>';
 } ?>
 </center>
 </body>

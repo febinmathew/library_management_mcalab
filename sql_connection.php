@@ -1,7 +1,7 @@
  <?php
 $servername = "localhost";
 $username = "root";
-$password = "cetmca";
+$password = "";
 $db_name = "library_cet";
 
 $table_books="books";

@@ -4,13 +4,13 @@
 <?php 
 $basic_path="/lib";
 session_start();
-if($_GET["logout"]==1){
+if(isset($_GET["logout"]) && $_GET["logout"]==1){
     //echo "logout";
     $_SESSION["session_email"]="";
     $_SESSION["session_password"]="";
 }
 $userrow;
-if ($_POST["sign_up"]||$_POST["user_pass"]){
+if (isset($_POST["sign_up"]) && isset($_POST["user_pass"])){
     if($_POST["user_pass"]===$_POST["user_pass_confirm"]){
         $sql22 = "INSERT INTO users(user_type,admission_no,user_name,user_email,user_pass,department) VALUES("
         ."0".",'"
@@ -20,17 +20,32 @@ if ($_POST["sign_up"]||$_POST["user_pass"]){
         .$_POST["user_pass"]."',"
         //.$_POST["user_pass_confirm"].","
         ."1".");";
-        echo $sql22;
+        //echo $sql22;
         $result=$conn->query($sql22);
+        if($result){
+            $last_id = $conn->insert_id;
+            echo "<center><h2>User created successfully. ID is: " . $last_id."</h2><br/>
+            <a href=".$basic_path."/login/login.php".">Login</a>
+            </center>";
+            $_SESSION["session_email"]="";
+            $_SESSION["session_password"]="";
+        }else{
+            echo "<center><h1>Error : </h1><h2>" .$conn->error."</h2></center>";
+        }
         return;
+
+       
+        //if($_SERVER['PHP_SELF']!='/lib/login/login.php')
+            //header("Location: ".$basic_path."/login/login.php?ls=f");
+        
     }
 }
-if ((!$_POST["user_email"] && !$_POST["user_pass"]) && $_SESSION["session_email"]!=null && $_SESSION["session_password"]!=null){
+if ((!isset($_POST["user_email"]) && !isset($_POST["user_pass"])) && isset($_SESSION["session_email"])!=null && isset($_SESSION["session_password"])!=null){
     //echo "custom session";
     $_POST["user_email"]=$_SESSION["session_email"];
     $_POST["user_pass"]=$_SESSION["session_password"];
 }
-if ($_POST["user_email"] && $_POST["user_pass"]){
+if (isset($_POST["user_email"]) && isset($_POST["user_pass"])){
     //checkAuth($_POST["user_email"],$_POST["user_pass"]);
     $sql = "SELECT * FROM users WHERE user_email='".$_POST["user_email"]."' AND user_pass= '".$_POST["user_pass"]."';";
     //echo $sql;//. " ".__DIR__.'/'.'./sql_connection.php';

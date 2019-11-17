@@ -134,7 +134,7 @@ margin-top:13%;
 
 }
 .r{
-background-color:#ffffff;
+background-color:#ffffffe7;
 width:15%;
 height:100%;
 position:absolute;
@@ -149,9 +149,9 @@ font-size:25px;
 font-weight:bold;
 }
 .jf{
-width:150px;
-height:150px;
-margin-left:40px;
+
+width: 100%;
+/* margin-left:40px; */
 margin-top:25px;
 }
 .sd{
@@ -163,57 +163,57 @@ margin-top:5%;
 padding:10px;
 }
 .ds{
-color:green;
+/* color:green; */
 text-align:center;
-font-weight:bold;
+/* font-weight:bold;
 margin-left:0px;
 margin-top:1%;
-padding:0px;
+padding:0px; */
 }
 .yr a{
-background-color:green;
-padding:20px;
-text-align:center;
+/* background-color:green; */
+/* padding:20px; */
+/* text-align:center;
 font-size:15px;
-font-weight:bold;
+font-weight:bold; */
 margin-left:20%;
 margin-top:6%;
 position:absolute;
 }
 .yrr a{
-background-color:green;
-padding:20px;
-text-align:center;
+/* background-color:green; */
+/* padding:20px; */
+/* text-align:center;
 font-size:18px;
-font-weight:bold;
-margin-left:40%;
+font-weight:bold; */
+margin-left:35%;
 margin-top:6%;
 position:absolute;
 }
 .yp a{
-background-color:green;
+/* background-color:green;
 padding:20px;
 text-align:center;
 font-size:15px;
-font-weight:bold;
-margin-left:60%;
+font-weight:bold; */
+margin-left:50%;
 margin-top:6%;
 position:absolute;
 }
 .ypp a{
-background-color:green;
+/* background-color:green;
 padding:20px;
 text-align:center;
 font-size:15px;
-font-weight:bold;
-margin-left:85%;
+font-weight:bold; */
+margin-left:65%;
 margin-top:6%;
 position:absolute;
 }
 
 .km a:link{
-color:white;
-text-decoration:none;
+/* color:white; */
+/* text-decoration:none; */
 }
 
 #poy
