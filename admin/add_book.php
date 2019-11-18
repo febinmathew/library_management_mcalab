@@ -72,7 +72,7 @@ if ($conn->query($sql) === TRUE) {
 		<td>Quantity</td><td><input type="text" class="form-control mt-1" name="book_quantity" required></td>
 	</tr>
 	<tr>
-		<td>Price</td><td><input type="text" class="form-control mt-1" name="book_price" requiredy></td>
+		<td>Price</td><td><input type="text" class="form-control mt-1" name="book_price" required></td>
 	</tr>
 	
 </table>

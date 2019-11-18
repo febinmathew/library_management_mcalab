@@ -81,6 +81,9 @@ if (isset($_POST["return"]) && isset($_POST["issue_id"])){
 $book_issue_table="book_issue";
 $sql = "SELECT book_issue.issue_status as issue_status,
 
+book_issue.issue_date as issue_date,
+
+ADDDATE(book_issue.issue_date , 30) as last_date,
 book_issue.issue_id as issue_id,
 books.id as book_id,
  books.book_name as book_name,
@@ -103,7 +106,8 @@ if ($result->num_rows > 0) {
 		<th scope="col">Book Name</th>
 		<th scope="col">User ID</th>
 		<th scope="col">User Name</th>
-		<th scope="col">Department</th>
+		<th scope="col">Issue Date</th>
+		<th scope="col">Last Date</th>
 		<th scope="col">Status</th>
 		<th scope="col">Action</th>
 	</tr>
@@ -115,7 +119,8 @@ if ($result->num_rows > 0) {
 		echo '<form method="POST">';
 echo "<tr><td>" . $row["book_id"]. "</td><td>". $row["book_name"]. "</td><td>"
 . $row["user_id"]. "</td><td>". $row["user_name"]. "</td><td>"
-. $row["dep_name"]. "</td>". "</td><td>"
+ . $row["issue_date"]. "</td>". "<td>"
+ . $row["last_date"]. "</td>". "<td>"
 .getStatusTextFromCode($row["issue_status"]). "</td><td>"
 .getStatusButtonFromCode($row["issue_status"],$row["book_id"],$row["issue_id"]). "</td>". "</tr>";
 }

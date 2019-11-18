@@ -44,6 +44,8 @@ if ((!isset($_POST["user_email"]) && !isset($_POST["user_pass"])) && isset($_SES
     //echo "custom session";
     $_POST["user_email"]=$_SESSION["session_email"];
     $_POST["user_pass"]=$_SESSION["session_password"];
+    //echo $_POST["current_password"]." session  ".$_SESSION["user_pass"];
+    //return;
 }
 if (isset($_POST["user_email"]) && isset($_POST["user_pass"])){
     //checkAuth($_POST["user_email"],$_POST["user_pass"]);
